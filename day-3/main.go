@@ -82,10 +82,10 @@ func getValidNumbers(in [][]int32) []int {
 				}
 				wasOnNum = true
 			} else if wasOnNum {
-				maxInt = columnIndex - 1
+				maxInt = columnIndex
 				wasOnNum = false
-				if shouldNumberBeCounted(in, rowIndex, minInt-1, maxInt+1) {
-					val := combineNumbersIntoSingle(in[rowIndex][minInt : maxInt+1])
+				if shouldNumberBeCounted(in, rowIndex, minInt-1, maxInt) {
+					val := combineNumbersIntoSingle(in[rowIndex][minInt:maxInt])
 					res = append(res, val)
 				}
 			}
@@ -118,23 +118,23 @@ func combineNumbersIntoSingle(in []int32) int {
 	return res
 }
 
-// shouldNumberBeCounted checks if the number with the boundaries matrix[row][minColumn+1] : matrix[row][maxColumn-1] should be counted.
-func shouldNumberBeCounted(matrix [][]int32, row, minColumn, maxColumn int) bool {
+// shouldNumberBeCounted checks if the number in the boundaries matrix[row][minColumn+1] : matrix[row][maxColumn-1] should be counted.
+func shouldNumberBeCounted(matrix [][]int32, row, minIdxColumn, maxIdxColumn int) bool {
 	// check row above
 	if rowVal := row - 1; rowVal >= 0 {
-		if rowHasSpecialChar(matrix[rowVal], minColumn, maxColumn) {
+		if rowHasSpecialChar(matrix[rowVal], minIdxColumn, maxIdxColumn) {
 			return true
 		}
 	}
 
 	// check same row
-	if rowHasSpecialChar(matrix[row], minColumn, maxColumn) {
+	if rowHasSpecialChar(matrix[row], minIdxColumn, maxIdxColumn) {
 		return true
 	}
 
 	// check row below
 	if rowVal := row + 1; rowVal < len(matrix) {
-		if rowHasSpecialChar(matrix[rowVal], minColumn, maxColumn) {
+		if rowHasSpecialChar(matrix[rowVal], minIdxColumn, maxIdxColumn) {
 			return true
 		}
 	}
