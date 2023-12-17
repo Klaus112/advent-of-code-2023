@@ -7,11 +7,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
-)
 
-const (
-	inputFile = "files/input.txt"
-	testFile  = "files/test.txt"
+	"github.com/klaus112/adventofcode/common"
 )
 
 const (
@@ -20,7 +17,7 @@ const (
 )
 
 func main() {
-	f, err := os.Open(inputFile)
+	f, err := os.Open(common.InputFile)
 	if err != nil {
 		fmt.Println("could not open file", err)
 
