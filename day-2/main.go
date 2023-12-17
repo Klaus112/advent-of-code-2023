@@ -7,11 +7,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
-)
 
-const (
-	inputFile = "files/input.txt"
-	testFile  = "files/test.txt"
+	"github.com/klaus112/adventofcode/common"
 )
 
 // game contains information about a single game recording it's highest values
@@ -21,7 +18,7 @@ type game struct {
 }
 
 func main() {
-	f, err := os.Open(testFile)
+	f, err := os.Open(common.InputFile)
 	if err != nil {
 		fmt.Println("could not open file", err)
 
