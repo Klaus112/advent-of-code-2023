@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/klaus112/adventofcode/common"
+	"github.com/klaus112/advent-of-code-2023/common"
 )
 
 // game contains information about a single game recording it's highest values

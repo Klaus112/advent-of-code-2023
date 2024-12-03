@@ -1,5 +1,7 @@
 package common
 
+import "strings"
+
 const (
 	InputFile = "files/input.txt"
 	TestFile  = "files/test.txt"
@@ -23,4 +25,11 @@ func HashIntersect[T comparable](a []T, b []T) []T {
 	}
 
 	return set
+}
+
+func RemoveEmpty(in string) string {
+	in, _ = strings.CutPrefix(in, " ")
+	in, _ = strings.CutSuffix(in, " ")
+
+	return in
 }
